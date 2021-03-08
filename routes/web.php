@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Livewire\Guest\Home;
+use App\Http\Livewire\App\Dashboard;
+use App\Http\Livewire\Guest\Auth\Login;
+use App\Http\Livewire\Guest\Auth\Register;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', Home::class);
+Route::get('/dashboard', Dashboard::class);
+Route::get('/login', Login::class);
+Route::get('/cadastrar', Register::class);
