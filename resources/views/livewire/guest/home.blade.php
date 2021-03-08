@@ -1,7 +1,7 @@
 <div>
     {{-- In work, do what you enjoy. --}}
     <div class="absolute z-10">
-        @livewire('guest.header')
+        @livewire('layouts.guest.header')
     </div>
     
     <div class="w-screen h-screen dark:bg-gray-800">

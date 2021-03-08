@@ -1,30 +1,26 @@
-<div x-data="{IsOpen: false, dark: false}">
+<div x-data="{IsOpen: false, dark: localStorage.theme === 'dark'}">
     {{-- Success is as dangerous as failure. --}}
     <div class="hidden md:block">
         <div class="flex justify-between bg-white dark:bg-gray-900 w-screen h-20 border-b dark:border-gray-400">
-            <div class="mt-5 ml-10 p-2">
-                <a href="{{ url('/') }}" class="p-2 rounded-md underline cursor-pointer text-gray-700 dark:text-gray-100 transition duration-150 hover:bg-gray-700 hover:text-white">
+            <div class="flex items-center justify-center">
+                <a href="{{ url('/') }}" class="p-2 ml-4 rounded-md cursor-pointer text-gray-700 dark:text-gray-100 transition duration-150 hover:bg-gray-700 hover:text-white">
                     Home
                 </a>
             </div>
-            <div class="mr-10 mt-5 p-2">
-                <div class="inline-block mr-4" onclick="change()" @click="dark = !dark">
-                    <div x-show="!dark" class="text-xl inline text-gray-700 dark:text-white">
-                        <i class="far fa-sun"></i>
-                    </div>
-                    <div x-show="dark" class="text-xl inline text-gray-700 dark:text-white">
-                        <i class="far fa-moon"></i>
-                    </div>
+            <div class="flex items-center justify-center mr-4">
+                <div class="inline-flex items-center justify-center mr-4 text-gray-700 dark:text-white" onclick="change()" @click="dark = !dark">
+                    <box-icon name="sun" class="fill-current w-6 h-6" x-show="!dark"></box-icon>
+                    <box-icon name="moon" class="fill-current w-6 h-6 " x-show="dark"></box-icon>
                 </div>
                 @auth  
-                    <a href="{{ url('dashboard') }}" class="mr-4 p-2 rounded-md underline cursor-pointer text-gray-700 dark:text-gray-100 bg-transparent transition duration-150 hover:bg-gray-700 hover:text-white">
+                    <a href="{{ url('dashboard') }}" class="mr-4 p-2 rounded-md cursor-pointer text-gray-700 dark:text-gray-100 bg-transparent transition duration-150 hover:bg-gray-700 hover:text-white">
                         Dashboard
                     </a>     
                 @else
-                    <a href="{{ url('login') }}" class="mr-4 p-2 rounded-md underline cursor-pointer text-gray-700 dark:text-gray-100 transition duration-150 hover:bg-gray-700 hover:text-white">
+                    <a href="{{ url('login') }}" class="mr-4 p-2 rounded-md cursor-pointer text-gray-700 dark:text-gray-100 transition duration-150 hover:bg-gray-700 hover:text-white">
                         Login
                     </a>
-                    <a href="{{ url('cadastrar') }}" class="mt-5 p-2 rounded-md underline cursor-pointer text-gray-700 dark:text-gray-100 transition duration-150 hover:bg-gray-700 hover:text-white">
+                    <a href="{{ url('cadastrar') }}" class=" mr-4 p-2 rounded-md cursor-pointer text-gray-700 dark:text-gray-100 transition duration-150 hover:bg-gray-700 hover:text-white">
                         Cadastrar
                     </a>
                 @endauth
