@@ -10,7 +10,7 @@
             <div class="flex items-center justify-center mr-4">
                 <div class="inline-flex items-center justify-center mr-4 text-gray-700 dark:text-white" onclick="change()" @click="dark = !dark">
                     <box-icon name="sun" class="fill-current w-6 h-6" x-show="!dark"></box-icon>
-                    <box-icon name="moon" class="fill-current w-6 h-6 " x-show="dark"></box-icon>
+                    <box-icon name="moon" class="fill-current w-6 h-6" x-show="dark"></box-icon>
                 </div>
                 @auth  
                     <a href="{{ url('dashboard') }}" class="mr-4 p-2 rounded-md cursor-pointer text-gray-700 dark:text-gray-100 bg-transparent transition duration-150 hover:bg-gray-700 hover:text-white">
@@ -35,20 +35,12 @@
                     Home
                 </a>
                 <div @click="IsOpen = !IsOpen">
-                    <div x-show.transition.duration.400ms="!IsOpen" class="text-xl inline text-gray-700 dark:text-white absolute right-4 top-3">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                    <div x-show.transition.duration.400ms="IsOpen" class="text-xl inline text-gray-700 dark:text-white absolute right-4 top-3">
-                        <i class="fas fa-times"></i>
-                    </div>
+                    <box-icon name='menu' x-show.transition.duration.400ms="!IsOpen" class="fill-current w-8 h-8 text-xl inline text-gray-700 dark:text-white absolute right-4 top-3"></box-icon>
+                    <box-icon name='x' x-show.transition.duration.400ms="IsOpen" class="fill-current w-8 h-8 text-xl inline text-gray-700 dark:text-white absolute right-4 top-3"></box-icon>
                 </div>
                 <div onclick="change()" @click="dark = !dark">
-                    <div x-show.transition.duration.400ms="!dark" class="text-xl inline text-gray-700 dark:text-white absolute right-20 top-3">
-                        <i class="far fa-sun"></i>
-                    </div>
-                    <div x-show.transition.duration.400ms="dark" class="text-xl inline text-gray-700 dark:text-white absolute right-20 top-3">
-                        <i class="far fa-moon"></i>
-                    </div>
+                    <box-icon name="sun" x-show.transition.duration.400ms="!dark" class="fill-current w-6 h-6 text-xl inline text-gray-700 dark:text-white absolute right-20 top-4"></box-icon>
+                    <box-icon name="moon" x-show.transition.duration.400ms="dark" class="fill-current w-6 h-6 text-xl inline text-gray-700 dark:text-white absolute right-20 top-4"></box-icon>
                 </div>
                 <div x-show.transition.duration.200ms="IsOpen" class="mt-10">
                     @auth  

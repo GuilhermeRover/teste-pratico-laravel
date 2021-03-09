@@ -4,9 +4,9 @@
         @livewire('layouts.guest.header')
     </div>
     
-    <div class="w-screen h-screen dark:bg-gray-800">
+    <div class="w-screen h-screen dark:bg-gray-900">
         <div class="h-full w-full flex items-center justify-center">
-            <div class="md:border md:rounded-md md:ring-1 md:ring-blue-200 md:-mt-10 md:p-10 dark:bg-gray-900 dark:ring-blue-900">
+            <div class="md:border md:rounded-md md:ring-1 md:ring-blue-200 md:-mt-10 md:p-10 dark:ring-blue-900">
                 <form action="/login" method="post" class="">
                     <div>
                         <h1 class="text-4xl text-center text-gray-600 mb-6 dark:text-gray-100">Cadastre-se</h1>
