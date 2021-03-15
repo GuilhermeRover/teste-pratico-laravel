@@ -42,6 +42,7 @@
             localStorage.theme = 'dark';
         }
     }
+    
     </script>
 </body>
 </html> 
