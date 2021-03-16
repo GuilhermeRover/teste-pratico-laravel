@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+<<<<<<< HEAD
 @tailwind utilities;
 
 input:focus-within ~ label,
@@ -26,3 +27,6 @@ select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset;
     transition: background-color 5000s ease-in-out 0s;
 }
+=======
+@tailwind utilities;
+>>>>>>> 4105fddd429198f3a06b11bdf49215979fb1b601

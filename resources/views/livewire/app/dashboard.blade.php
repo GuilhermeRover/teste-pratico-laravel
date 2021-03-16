@@ -10,7 +10,11 @@
             @livewire('layouts.app.sidebar')
         </div>
         <div class="pt-14 w-full h-full border-l">
+<<<<<<< HEAD
             <h1 class="text-3xl p-8 text-gray-800 dark:text-white">
+=======
+            <h1 class="text-3xl p-8 text-gray-800">
+>>>>>>> 4105fddd429198f3a06b11bdf49215979fb1b601
                 Dashboard
             </h1>
         </div>
