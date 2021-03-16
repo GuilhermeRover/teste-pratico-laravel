@@ -21,11 +21,7 @@ class UserFactory extends Factory
      * @return array
      */
     public function definition()
-<<<<<<< HEAD
     {   
-=======
-    {
->>>>>>> 4105fddd429198f3a06b11bdf49215979fb1b601
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
