@@ -10,9 +10,10 @@
             @livewire('layouts.app.sidebar')
         </div>
         <div class="pt-14 w-full h-full border-l">
-            <h1 class="text-3xl p-8 text-gray-800 dark:text-white">
-                Produtos
-            </h1>
+            
+            <div class="w-11/12 ml-6">
+                <livewire:app.table.products/>
+            </div>
         </div>
     </div>
 </div>

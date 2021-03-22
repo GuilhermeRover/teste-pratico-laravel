@@ -29,9 +29,9 @@
                             <div class="h-full flex items-center justify-center p-2">
                                 
                                 {{-- Form --}}
-                                <form method="post" wire:submit.prevent="create" @click.away="modal = false" class="w-full md:w-6/12 lg:w-5/12 xl:w-4/12 rounded-lg shadow-md border p-6 bg-white dark:bg-gray-900">
+                                <form method="post" wire:submit.prevent="create"  @click.away="document.getElementById('name').value = '', document.getElementById('email').value = '', document.getElementById('password').value = '', modal = false" class="w-full md:w-6/12 lg:w-5/12 xl:w-4/12 rounded-lg shadow-md border p-6 bg-white dark:bg-gray-900">
                                     {{-- X modal button --}}                
-                                    <box-icon name='x' @click="modal = false" class="fill-current text-gray-800 float-right cursor-pointer dark:text-white"></box-icon>
+                                    <box-icon name='x'  @click="document.getElementById('name').value = null, document.getElementById('email').value = null, document.getElementById('password').value = null, modal = false" class="fill-current text-gray-800 float-right cursor-pointer dark:text-white"></box-icon>
                                     
                                     <h2 class="mb-10 mt-4 text-2xl text-center text-gray-700 dark:text-white">Adicionar novo usuário</h2>
                                     <div class="relative border-b-2 mb-8">
@@ -80,14 +80,13 @@
                     </div>
                 </div>
                 
-                <div class="">
-                    <livewire:app.table.user searchable="name, email, created_at" exportable />
+                <div class="w-11/12 ml-6">
+                    <livewire:app.table.user/>
                 </div>
                 
             </div>
         </div>
     </div>
 
-    
 
 </div>

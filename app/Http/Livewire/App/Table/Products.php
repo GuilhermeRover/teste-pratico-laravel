@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\App\Table;
 
-use App\Models\User as ModelsUser;
+use App\Models\Product;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
 
@@ -10,20 +10,21 @@ use Mediconesystems\LivewireDatatables\TimeColumn;
 use Mediconesystems\LivewireDatatables\NumberColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
-class User extends LivewireDatatable
+class Products extends LivewireDatatable
 {
-    public $model = ModelsUser::class;
+    public $model = Product::class;
 
     public $hideable = 'select';
     public $exportable = true;
     //public $afterTableSlot = 'components.selected';
-
-    public function builder() {
+    public function builder()
+    {
         //
-        return ModelsUser::query();
+        return Product::query();
     }
 
-    public function columns() {
+    public function columns()
+    {
         //
         return [
             //Column::checkbox(),
@@ -31,11 +32,10 @@ class User extends LivewireDatatable
             NumberColumn::name('id')->label('ID')->sortBy('id'),
 
             Column::name('name')->truncate()->label('Nome')->searchable()->editable()->defaultSort('asc'),
-  
-            Column::name('email')->truncate()->label('Email')->searchable()->editable(),
-  
-            DateColumn::name('created_at')->label('Registrado em')->searchable(),
             
+            Column::name('user_id')->truncate()->label('Usuario')->searchable()->editable()->defaultSort('asc'),
+  
+            Column::name('price')->truncate()->label('Preço')->searchable()->editable(),    
             
             Column::callback(['id', 'name'], function ($id, $name) {
                 return view('livewire.app.table.actions', ['id' => $id, 'name' => $name]);
