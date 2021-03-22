@@ -1,4 +1,4 @@
-<div x-data="{IsOpen: false, Sidebar: false, dark: localStorage.theme === 'dark'}">
+<div>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
     <div class="absolute z-10">
         @livewire('layouts.app.header')

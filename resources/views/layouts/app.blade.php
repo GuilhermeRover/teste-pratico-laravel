@@ -19,8 +19,9 @@
     <title>Teste prático laravel</title>
 </head>
 <body>
-    
-    {{ $slot }}
+    <div x-data="{IsOpen: false, Sidebar: false, modal: false, dark: localStorage.theme === 'dark'}">
+        {{ $slot }}
+    </div>
 
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
