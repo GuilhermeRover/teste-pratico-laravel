@@ -18,8 +18,9 @@
 
     <title>Teste prático laravel</title>
 </head>
-<body>
-    <div x-data="{IsOpen: false, Sidebar: false, modal: false, dark: localStorage.theme === 'dark'}">
+<body class="dark:bg-gray-900">
+    
+    <div x-data="{IsOpen: false, lang: false, Sidebar: false, modal: false, dark: localStorage.theme === 'dark'}">
         {{ $slot }}
     </div>
 
@@ -31,19 +32,18 @@
 
 
     <script>
-    // div sun/moon
-    var htmlClasses = "";
-    function change() {
-        htmlClasses = document.querySelector('html').classList;
-        if(localStorage.theme == 'dark') {
-            htmlClasses.remove('dark');
-            localStorage.removeItem('theme')
-        } else {
-            htmlClasses.add('dark');
-            localStorage.theme = 'dark';
+        // div sun/moon
+        var htmlClasses = "";
+        function change() {
+            htmlClasses = document.querySelector('html').classList;
+            if(localStorage.theme == 'dark') {
+                htmlClasses.remove('dark');
+                localStorage.removeItem('theme')
+            } else {
+                htmlClasses.add('dark');
+                localStorage.theme = 'dark';
+            }
         }
-    }
-    
     </script>
 </body>
 </html> 

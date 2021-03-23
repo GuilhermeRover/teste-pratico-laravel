@@ -1,5 +1,12 @@
 <div x-data="{IsOpen: false, dark: localStorage.theme === 'dark'}">
-    {{-- Success is as dangerous as failure. --}}
+    {{-- Success is as dangerous as failure. 
+        
+                    <!-- Authentication Links -->
+
+                    <a class="dropdown-item" href="lang/en"><img src="{{asset('img/us.png')}}"> English</a>
+                    <a class="dropdown-item" href="lang/bn"><img src="{{asset('img/bn.png')}}"> Bengali</a>
+                    <a class="dropdown-item" href="lang/pt_BR"><img src="{{asset('img/pt_BR.png')}}"> Brasil</a>
+        --}}
     <div class="hidden md:block">
         <div class="flex justify-between bg-white dark:bg-gray-900 w-screen h-20 border-b dark:border-gray-400">
             <div class="flex items-center justify-center">
@@ -8,7 +15,78 @@
                 </a>
             </div>
             <div class="flex items-center justify-center mr-4">
-                <div class="inline-flex items-center justify-center mr-4 text-gray-700 dark:text-white" onclick="change()" @click="dark = !dark">
+                {{-- language config --}}
+                <div>
+                    <div @click="IsOpen = !IsOpen" class="inline-flex items-center justify-center mr-4 cursor-pointer text-gray-700 dark:text-white">
+                        @php $locale = session()->get('locale'); /* dd($locale); */ @endphp
+                        @switch($locale)
+                            @case("en")
+                                <div class="hidden flex items-center justify-center">
+                                    <h1 class="mr-2">English</h1>
+                                    <img src="{{ asset('images/United_States.svg') }}" alt="English" class="rounded-lg h-6">
+                                </div>
+                            @break
+                            @case('pt_BR')
+                                <div class="flex items-center justify-center">
+                                    <h1 class="mr-2">Português Brasileiro</h1>
+                                    <img src="{{ asset('images/Brazil.svg') }}" alt="Brasil" class="rounded-lg h-6">
+                                </div>
+                            @break
+                            @case('es')
+                                <div class="hidden flex items-center justify-center">
+                                    <h1 class="mr-2">Español</h1>
+                                    <img src="{{ asset('images/Spain.svg') }}" alt="Español" class="rounded-lg h-6">
+                                </div>
+                            @break
+                            @case('de')
+                                <div class="hidden flex items-center justify-center">
+                                    <h1 class="mr-2">Deutsche</h1>
+                                    <img src="{{ asset('images/Germany.svg') }}" alt="Deutsche" class="rounded-lg h-6">
+                                </div>
+                            @break
+                            @case('fr')
+                                <div class="hidden flex items-center justify-center">
+                                    <h1 class="mr-2">Français</h1>
+                                    <img src="{{ asset('images/France.svg') }}" alt="Français" class="rounded-lg h-6">
+                                </div>
+                            @break
+                            @default
+                                <div class="flex items-center justify-center">
+                                    <h1 class="mr-2">Português Brasileiro</h1>
+                                    <img src="{{ asset('images/Brazil.svg') }}" alt="Brasil" class="rounded-lg h-6">
+                                </div>
+                        @endswitch
+                                               
+                        <box-icon name="chevron-down" class="fill-current w-6 h-6 text-gray-800 dark:text-white" x-show="!IsOpen"></box-icon>
+                        <box-icon name="chevron-up" class="fill-current w-6 h-6 text-gray-800 dark:text-white" x-show="IsOpen"></box-icon>
+                    </div>
+                    <div x-show="IsOpen" @click.away="IsOpen = false" class="absolute flex items-center justify-center h-60 w-60 right-64 shadow-md rounded-md border bg-white dark:bg-gray-900">
+                        <ul>
+                            <li class="p-2 flex items-center justify-center">
+                                <a href="lang/pt_BR" class="block mr-2 text-gray-800 dark:text-white">Português Brasileiro</a>
+                                <img src="{{ asset('images/Brazil.svg') }}" alt="Brasil" class="rounded-lg h-6">
+                            </li>
+                            <li class="p-2 flex items-center justify-center">
+                                <a href="lang/en" class="block mr-2 text-gray-800 dark:text-white">English</a>
+                                <img src="{{ asset('images/United_States.svg') }}" alt="English" class="rounded-lg h-6">
+                            </li>
+                            <li class="p-2 flex items-center justify-center">
+                                <a href="lang/es" class="block mr-2 text-gray-800 dark:text-white">Español</a>
+                                <img src="{{ asset('images/Spain.svg') }}" alt="Español" class="rounded-lg h-6">
+                            </li>
+                            <li class="p-2 flex items-center justify-center">
+                                <a href="lang/de" class="block mr-2 text-gray-800 dark:text-white">Deutsche</a>
+                                <img src="{{ asset('images/Germany.svg') }}" alt="Deutsche" class="rounded-lg h-6">
+                            </li>
+                            <li class="p-2 flex items-center justify-center">
+                                <a href="lang/fr" class="block mr-2 text-gray-800 dark:text-white">Français</a>
+                                <img src="{{ asset('images/France.svg') }}" alt="Français" class="rounded-lg h-6">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="inline-flex items-center justify-center mr-4 cursor-pointer text-gray-700 dark:text-white" onclick="change()" @click="dark = !dark">
                     <box-icon name="sun" class="fill-current w-6 h-6" x-show="!dark"></box-icon>
                     <box-icon name="moon" class="fill-current w-6 h-6" x-show="dark"></box-icon>
                 </div>
