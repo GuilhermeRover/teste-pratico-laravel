@@ -24,7 +24,7 @@
 
                 {{-- Modal --}}
                 <div>
-                    <div x-show.transition.duration.200ms="modal" class="absolute top-0 left-0 flex items-center justify-center z-50 w-screen h-screen bg-black bg-opacity-75">
+                    <div x-show.transition.duration.200ms="modal" class="absolute top-0 left-0 flex items-center justify-center z-50 w-screen h-screen bg-black bg-opacity-75"  @user-created.window="document.getElementById('name').value = null, document.getElementById('email').value = null, document.getElementById('password').value = null, modal = false">
                         <div class="w-full h-full">
                             <div class="h-full flex items-center justify-center p-2">
                                 
@@ -37,23 +37,26 @@
                                         {{__('content.app-users-add')}}
                                     </h2>
                                     <div class="relative border-b-2 mb-8">
-                                        <input wire:model="name" type="text" id="name" name="name" placeholder=" " autocomplete="off" autofocus class="block w-full appearance-none focus:outline-none focus:ring-0 border-b border-t-0 border-l-0 border-r-0 border-blue-500 bg-transparent dark:text-white"/>
+                                        <input wire:model="name" type="text" required id="name" name="name" placeholder=" " autocomplete="off" autofocus class="block w-full appearance-none focus:outline-none focus:ring-0 border-b border-t-0 border-l-0 border-r-0 border-blue-500 bg-transparent dark:text-white"/>
                                         <label for="name" class="block absolute top-2 left-3 duration-300 origin-0 text-gray-700 dark:text-white">
                                             {{__('content.app-users-name')}}
                                         </label>
                                     </div>
                                     <div class="relative border-b-2 mb-8">
-                                        <input wire:model="email" type="text" id="email" name="email" placeholder=" " autocomplete="off" class="block w-full appearance-none focus:outline-none focus:ring-0 border-b border-t-0 border-l-0 border-r-0 border-blue-500 bg-transparent dark:text-white"/>
+                                        <input wire:model="email" type="email" required id="email" name="email" placeholder=" " autocomplete="off" class="block w-full appearance-none focus:outline-none focus:ring-0 border-b border-t-0 border-l-0 border-r-0 border-blue-500 bg-transparent dark:text-white"/>
                                         <label for="email" class="block absolute top-2 left-3 duration-300 origin-0 text-gray-700 dark:text-white">
                                             {{__('content.app-users-email')}}
                                         </label>
                                     </div>
                                     <div class="relative border-b-2 mb-8">
-                                        <input wire:model="password" type="password" id="password" name="password" placeholder=" " autocomplete="off" class="block w-full appearance-none focus:outline-none focus:ring-0 border-b border-t-0 border-l-0 border-r-0 border-blue-500 bg-transparent dark:text-white"/>
+                                        <input wire:model="password" type="password" required id="password" name="password" placeholder=" " autocomplete="off" class="block w-full appearance-none focus:outline-none focus:ring-0 border-b border-t-0 border-l-0 border-r-0 border-blue-500 bg-transparent dark:text-white"/>
                                         <label for="password" class="absolute top-2 left-3 duration-300 origin-0 text-gray-700 dark:text-white">
                                             {{__('content.app-users-password')}}
                                         </label>
                                     </div>
+                                     @isset($submit)
+                                         Oi
+                                     @endisset
                                     @error('name')
                                         <h1 class="inline text-base rounded-lg text-red-500 bg-red-100">
                                             {{ $message }}

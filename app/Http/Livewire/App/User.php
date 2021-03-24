@@ -27,11 +27,16 @@ class User extends Component {
 
         $this->validate();
         
-        ModelsUser::create([
+        $user = ModelsUser::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
+
+        // Event when user has created
+        $this->dispatchBrowserEvent('user-created', ['user' => $user]);
+        // Refresh datatables when user has created 
+        $this->emit('refreshLivewireDatatable');
     }
 
 }

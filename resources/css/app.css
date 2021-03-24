@@ -1,6 +1,12 @@
+[x-cloak] {
+  display: none;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 
 input:focus-within ~ label,
 input:not(:placeholder-shown) ~ label {
