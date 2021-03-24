@@ -34,8 +34,11 @@ class Register extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
-            dd($user);
-        $this->dispatchBrowserEvent('user-register', ['user' => $user]);
+        
+        // Event when user has created
+        $this->dispatchBrowserEvent('user-registered', ['user' => $user]);
+        // Refresh datatables when user has created 
+        $this->emit('refreshLivewireDatatable');
     }
 
 }

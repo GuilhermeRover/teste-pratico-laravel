@@ -24,7 +24,7 @@
 
                 {{-- Modal --}}
                 <div>
-                    <div x-show.transition.duration.200ms="modal" class="absolute top-0 left-0 flex items-center justify-center z-50 w-screen h-screen bg-black bg-opacity-75"  @user-created.window="document.getElementById('name').value = null, document.getElementById('email').value = null, document.getElementById('password').value = null, modal = false">
+                    <div x-show.transition.duration.200ms="modal" class="absolute top-0 left-0 flex items-center justify-center z-50 w-screen h-screen bg-black bg-opacity-75" @user-created.window="document.getElementById('name').value = null, document.getElementById('email').value = null, document.getElementById('password').value = null, modal = false">
                         <div class="w-full h-full">
                             <div class="h-full flex items-center justify-center p-2">
                                 

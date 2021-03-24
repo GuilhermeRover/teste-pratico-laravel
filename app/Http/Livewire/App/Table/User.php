@@ -26,7 +26,7 @@ class User extends LivewireDatatable
     public function columns() {
         //
         return [
-            //Column::checkbox(),
+            Column::checkbox(),
 
             NumberColumn::name('id')->label('ID')->sortBy('id'),
 
