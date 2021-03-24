@@ -25,18 +25,18 @@
         </div>
         <div x-show.transition.duration.400ms="IsOpen" @click.away="IsOpen = false" class="hidden md:block w-80 h-44 rounded-md absolute right-12 top-10 border shadow-md bg-white dark:bg-gray-800">
             <h1 class="mt-3 text-xs text-center text-gray-400">
-                Configurações
+                {{__('content.app-header-config')}}
             </h1>
             <a href="{{ url('/perfil') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
                 <box-icon name='user' class="fill-current text-gray-700 dark:text-gray-100"></box-icon>
                 <h1 class="text-gray-800 text-base ml-1 dark:text-white">
-                    Meu perfil
+                    {{__('content.app-header-profile')}}
                 </h1>
             </a>
             <a href="{{ url('/configuracoes') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
                 <box-icon name='cog' class="fill-current text-gray-700 dark:text-gray-100"></box-icon>
                 <h1 class="text-gray-800 text-base ml-1 dark:text-white">
-                    Configurações
+                    {{__('content.app-header-configuration')}}
                 </h1>
             </a>
             <h1 class="dataTime mt-2 text-xs text-center text-gray-400">
@@ -45,7 +45,7 @@
             <a href="{{ url('/logout') }}" class="flex items-center justify-center pl-2 mt-2 pt-2 pb-2 cursor-pointer bg-gray-50 dark:bg-gray-900">
                 <box-icon type='solid' name='log-out' class="fill-current  dark:text-gray-100"></box-icon>
                 <h1 class="text-red-600 text-base font-semibold ">
-                    Sair
+                    {{__('content.app-header-logout')}}
                 </h1>
             </a>
         </div>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="mr-6 ml-4 flex items-center cursor-pointer text-gray-800 dark:text-white" @click="IsOpen = !IsOpen">
                             <h1 class="text-base text-gray-800 dark:text-white">
-                                Menu
+                                {{__('content.app-header-menu')}}
                             </h1>
                             <box-icon name="chevron-down" class="fill-current w-8 h-8 absolute right-0 text-gray-700 dark:text-white" x-show.transition.duration.400ms="!IsOpen"></box-icon>
                             <box-icon name="chevron-up" class="fill-current w-8 h-8 absolute right-0 text-gray-700 dark:text-white" x-show.transition.duration.400ms="IsOpen"></box-icon>
@@ -81,7 +81,7 @@
         </div>
         <div class="md:hidden bg-white border-b dark:bg-gray-900" x-show.transition.duration.400ms="IsOpen" @click.away="IsOpen = false">
             <h1 class="text-xs text-center pt-4 text-gray-400">
-                Configurações
+                {{__('content.app-header-config')}}
             </h1>
             <h1 class="mt-3 text-xs text-center text-gray-700">
                 Eder Guilherme dos Reis Rover
@@ -89,13 +89,13 @@
             <a href="{{ url('/perfil') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
                 <box-icon name='user' class="fill-current text-gray-700 dark:text-gray-100"></box-icon>
                 <h1 class="text-gray-800 text-base ml-1 dark:text-white">
-                    Meu perfil
+                    {{__('content.app-header-profile')}}
                 </h1>
             </a>
             <a href="{{ url('/configuracoes') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
                 <box-icon name='cog' class="fill-current text-gray-700 dark:text-gray-100"></box-icon>
                 <h1 class="text-gray-800 text-base ml-1 dark:text-white">
-                    Configurações
+                    {{__('content.app-header-configuration')}}
                 </h1>
             </a>
             <h1 class="dataTime mt-2 text-xs text-center text-gray-400">
@@ -104,7 +104,7 @@
             <a href="{{ url('/logout') }}" class="flex items-center justify-center pl-2 mt-2 pt-2 pb-2 cursor-pointer bg-gray-50 dark:bg-gray-900">
                 <box-icon type='solid' name='log-out' class="fill-current  dark:text-gray-100"></box-icon>
                 <h1 class="text-red-600 text-base font-semibold">
-                    Sair
+                    {{__('content.app-header-logout')}}
                 </h1>
             </a>
         </div>

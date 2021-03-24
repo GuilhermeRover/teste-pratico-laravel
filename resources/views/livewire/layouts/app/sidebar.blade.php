@@ -6,7 +6,7 @@
         <div class="flex items-center justify-center pl-4">
             <box-icon type="solid" name='home' class="fill-current text-gray-700 dark:text-white"></box-icon>
             <h1 class="ml-2 text-gray-800 dark:text-white">
-                Dashboard
+                {{__('content.app-sidebar-dashboard')}}
             </h1>
         </div>
     </a>
@@ -14,7 +14,7 @@
         <div class="flex items-center justify-center pl-4">
             <box-icon type="solid" name='user' class="fill-current text-gray-700 dark:text-white"></box-icon>
             <h1 class="ml-2 text-gray-800 dark:text-white">
-                Usuários
+                {{__('content.app-sidebar-users')}}
             </h1>
         </div>
     </a>
@@ -22,7 +22,8 @@
         <div class="flex items-center justify-center pl-4">
             <box-icon name='receipt' class="fill-current text-gray-700 dark:text-white"></box-icon>
             <h1 class="ml-2 text-gray-800 dark:text-white">
-                Produtos
+                {{__('content.app-sidebar-products')}}
+
             </h1>
         </div>
     </a>

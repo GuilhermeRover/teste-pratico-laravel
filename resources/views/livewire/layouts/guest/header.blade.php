@@ -11,7 +11,7 @@
         <div class="flex justify-between bg-white dark:bg-gray-900 w-screen h-20 border-b dark:border-gray-400">
             <div class="flex items-center justify-center">
                 <a href="{{ url('/') }}" class="p-2 ml-4 rounded-md cursor-pointer text-gray-700 dark:text-gray-100 transition duration-150 hover:bg-gray-700 hover:text-white">
-                    Home
+                    {{__('content.guest-header-home')}}
                 </a>
             </div>
             <div class="flex items-center justify-center mr-4">
@@ -21,7 +21,7 @@
                         @php $locale = session()->get('locale'); /* dd($locale); */ @endphp
                         @switch($locale)
                             @case("en")
-                                <div class="hidden flex items-center justify-center">
+                                <div class="flex items-center justify-center">
                                     <h1 class="mr-2">English</h1>
                                     <img src="{{ asset('images/United_States.svg') }}" alt="English" class="rounded-lg h-6">
                                 </div>
@@ -33,19 +33,19 @@
                                 </div>
                             @break
                             @case('es')
-                                <div class="hidden flex items-center justify-center">
+                                <div class="flex items-center justify-center">
                                     <h1 class="mr-2">Español</h1>
                                     <img src="{{ asset('images/Spain.svg') }}" alt="Español" class="rounded-lg h-6">
                                 </div>
                             @break
                             @case('de')
-                                <div class="hidden flex items-center justify-center">
+                                <div class="flex items-center justify-center">
                                     <h1 class="mr-2">Deutsche</h1>
                                     <img src="{{ asset('images/Germany.svg') }}" alt="Deutsche" class="rounded-lg h-6">
                                 </div>
                             @break
                             @case('fr')
-                                <div class="hidden flex items-center justify-center">
+                                <div class="flex items-center justify-center">
                                     <h1 class="mr-2">Français</h1>
                                     <img src="{{ asset('images/France.svg') }}" alt="Français" class="rounded-lg h-6">
                                 </div>
@@ -92,14 +92,14 @@
                 </div>
                 @auth  
                     <a href="{{ url('dashboard') }}" class="mr-4 p-2 rounded-md cursor-pointer text-gray-700 dark:text-gray-100 bg-transparent transition duration-150 hover:bg-gray-700 hover:text-white">
-                        Dashboard
+                        {{__('content.guest-header-dashboard')}}
                     </a>     
                 @else
                     <a href="{{ url('login') }}" class="mr-4 p-2 rounded-md cursor-pointer text-gray-700 dark:text-gray-100 transition duration-150 hover:bg-gray-700 hover:text-white">
-                        Login
+                        {{__('content.guest-header-login')}}
                     </a>
                     <a href="{{ url('cadastrar') }}" class=" mr-4 p-2 rounded-md cursor-pointer text-gray-700 dark:text-gray-100 transition duration-150 hover:bg-gray-700 hover:text-white">
-                        Cadastrar
+                        {{__('content.guest-header-register')}}
                     </a>
                 @endauth
             </div>
@@ -110,7 +110,7 @@
         <div class="h-full w-full bg-gray-100 dark:bg-gray-900">
             <div class="block">
                 <a href="{{ url('/') }}" class="text-xl inline-block text-gray-700 dark:text-white p-3">
-                    Home
+                    {{__('content.guest-header-home')}}
                 </a>
                 <div @click="IsOpen = !IsOpen">
                     <box-icon name='menu' x-show.transition.duration.400ms="!IsOpen" class="fill-current w-8 h-8 text-xl inline text-gray-700 dark:text-white absolute right-4 top-3"></box-icon>
@@ -123,14 +123,14 @@
                 <div x-show.transition.duration.200ms="IsOpen" class="mt-10">
                     @auth  
                         <a href="{{ url('/dashboard') }}" class="text-xl block text-gray-700 dark:text-white p-3">
-                            Dashboard
+                            {{__('content.guest-header-dashboard')}}
                         </a>     
                     @else
                         <a href="{{ url('/login') }}" class="text-xl block text-gray-700 dark:text-white p-3">
-                            Login
+                            {{__('content.guest-header-login')}}
                         </a>
                         <a href="{{ url('/cadastrar') }}" class="text-xl block text-gray-700 dark:text-white p-3">
-                            Cadastrar
+                            {{__('content.guest-header-register')}}
                         </a>
                     @endauth
                 </div>

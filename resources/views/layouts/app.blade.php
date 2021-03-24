@@ -44,6 +44,9 @@
                 localStorage.theme = 'dark';
             }
         }
+
+        var locale = {{ session()->get('locale') }};
+        console.log(locale);
     </script>
 </body>
 </html> 

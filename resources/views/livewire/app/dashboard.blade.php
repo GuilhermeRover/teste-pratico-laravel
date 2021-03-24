@@ -11,7 +11,7 @@
         </div>
         <div class="pt-14 w-full h-full border-l">
             <h1 class="text-3xl p-8 text-gray-800 dark:text-white">
-                Dashboard
+                {{__('content.app-dashboard-dashboard')}}
             </h1>
         </div>
     </div>

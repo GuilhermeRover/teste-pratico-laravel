@@ -16,7 +16,7 @@
                 <div class="inline-block rounded-md p-1 m-4 bg-gray-100 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-600">
                     <div class="flex items-center" @click="modal = true">
                         <h1 class="mr-2 text-2xl cursor-pointer text-gray-800 dark:text-white">
-                            Adicionar novo usuário
+                            {{__('content.app-users-add')}}
                         </h1>
                         <box-icon name='user-plus' class="fill-current text-gray-800 dark:text-white"></box-icon>
                     </div>
@@ -33,45 +33,47 @@
                                     {{-- X modal button --}}                
                                     <box-icon name='x'  @click="document.getElementById('name').value = null, document.getElementById('email').value = null, document.getElementById('password').value = null, modal = false" class="fill-current text-gray-800 float-right cursor-pointer dark:text-white"></box-icon>
                                     
-                                    <h2 class="mb-10 mt-4 text-2xl text-center text-gray-700 dark:text-white">Adicionar novo usuário</h2>
+                                    <h2 class="mb-10 mt-4 text-2xl text-center text-gray-700 dark:text-white">
+                                        {{__('content.app-users-add')}}
+                                    </h2>
                                     <div class="relative border-b-2 mb-8">
                                         <input wire:model="name" type="text" id="name" name="name" placeholder=" " autocomplete="off" autofocus class="block w-full appearance-none focus:outline-none focus:ring-0 border-b border-t-0 border-l-0 border-r-0 border-blue-500 bg-transparent dark:text-white"/>
                                         <label for="name" class="block absolute top-2 left-3 duration-300 origin-0 text-gray-700 dark:text-white">
-                                            Nome
+                                            {{__('content.app-users-name')}}
                                         </label>
                                     </div>
                                     <div class="relative border-b-2 mb-8">
                                         <input wire:model="email" type="text" id="email" name="email" placeholder=" " autocomplete="off" class="block w-full appearance-none focus:outline-none focus:ring-0 border-b border-t-0 border-l-0 border-r-0 border-blue-500 bg-transparent dark:text-white"/>
                                         <label for="email" class="block absolute top-2 left-3 duration-300 origin-0 text-gray-700 dark:text-white">
-                                            Email
+                                            {{__('content.app-users-email')}}
                                         </label>
                                     </div>
                                     <div class="relative border-b-2 mb-8">
                                         <input wire:model="password" type="password" id="password" name="password" placeholder=" " autocomplete="off" class="block w-full appearance-none focus:outline-none focus:ring-0 border-b border-t-0 border-l-0 border-r-0 border-blue-500 bg-transparent dark:text-white"/>
                                         <label for="password" class="absolute top-2 left-3 duration-300 origin-0 text-gray-700 dark:text-white">
-                                            Senha
+                                            {{__('content.app-users-password')}}
                                         </label>
                                     </div>
                                     @error('name')
                                         <h1 class="inline text-base rounded-lg text-red-500 bg-red-100">
-                                            Por favor, confira o nome e tente novamente. {{ $message }}
+                                            {{ $message }}
                                         </h1>
                                         <br>
                                     @enderror
                                     @error('email')
                                         <h1 class="inline text-base rounded-lg text-red-500 bg-red-100">
-                                            Por favor, confira o email e tente novamente. {{ $message }}
+                                            {{ $message }}
                                         </h1>
                                         <br>
                                     @enderror
                                     @error('password')
                                         <h1 class="inline text-base rounded-lg text-red-500 bg-red-100">
-                                            Por favor, confira a senha e tente novamente. {{ $message }}
+                                            {{ $message }}
                                         </h1>
                                         <br>
                                     @enderror
                                     <button type="submit" class="w-full text-xl p-2 mb-4 text-gray-900 bg-blue-500 ring-blue-300 ring-2 transition duration-150 hover:bg-blue-400 hover:text-gray-800 dark:bg-blue-900 dark:ring-blue-400 dark:text-gray-100">
-                                        Salvar
+                                        {{__('content.app-users-save')}}
                                     </button>
                                 </form>
 
