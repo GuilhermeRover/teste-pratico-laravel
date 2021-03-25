@@ -7,7 +7,6 @@
 @tailwind utilities;
 
 
-
 input:focus-within ~ label,
 input:not(:placeholder-shown) ~ label {
   @apply transform scale-75 -translate-y-8;
@@ -32,3 +31,17 @@ select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset;
     transition: background-color 5000s ease-in-out 0s;
 }
+
+
+/* Hide navbar when scrool down the pag, and show when scrool up  */
+.headroom {
+  will-change: transform;
+  transition: transform 200ms linear;
+}
+.headroom--pinned {
+  transform: translateY(0%);
+}
+.headroom--unpinned {
+  transform: translateY(-100%);
+}
+

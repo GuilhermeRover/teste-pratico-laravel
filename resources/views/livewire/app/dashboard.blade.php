@@ -13,6 +13,7 @@
             <h1 class="text-3xl p-8 text-gray-800 dark:text-white">
                 {{__('content.app-dashboard-dashboard')}}
 
+                
                 <div class="flex items-center justify-center ">
                     <button x-data="{}"
                         @click="$dispatch('notice', {type: 'success', text: '🔥 Success!'})"
