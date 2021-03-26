@@ -1,11 +1,11 @@
-<div>
+<div class="headroom headroom--pinned fixed" id="header">
     {{-- Success is as dangerous as failure. --}}
     <div class="hidden md:block">
         <div class="flex justify-between bg-white dark:bg-gray-900 w-screen h-14 border-b dark:border-gray-400">
             <div class="flex items-center justify-center">
                 <div @click="Sidebar = !Sidebar" class="">
-                    <box-icon name='chevrons-right' class="fill-current w-10 h-10 absolute top-2 left-5 text-gray-700 dark:text-white" x-show.transition.duration.400ms="!Sidebar"></box-icon>
-                    <box-icon name='chevrons-left' class="fill-current w-10 h-10 absolute top-2 left-5 text-gray-700 dark:text-white" x-show.transition.duration.400ms="Sidebar"></box-icon>
+                    <box-icon name='chevron-down' class="fill-current w-10 h-10 absolute top-2 left-5 text-gray-700 dark:text-white" x-show.transition.duration.400ms="!Sidebar"></box-icon>
+                    <box-icon name='chevron-up' class="fill-current w-10 h-10 absolute top-2 left-5 text-gray-700 dark:text-white" x-show.transition.duration.400ms="Sidebar"></box-icon>
                 </div>
                 <div class="w-px h-14 absolute left-20 bg-gray-200"></div>
             </div>

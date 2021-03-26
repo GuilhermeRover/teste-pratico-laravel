@@ -30,14 +30,14 @@ if (in_array(Request::segment(1),['ar', 'az', 'be', 'bg', 'bn', 'bs', 'ca', 'cs'
 */
 
 Route::get('/', Home::class);
-Route::get('/login', Login::class);
-Route::get('/cadastrar', Register::class);
+Route::get('/login', Login::class)->name('login');
+Route::get('/cadastrar', Register::class)->name('register');
 
-Route::get('/dashboard', Dashboard::class);
-Route::get('/usuarios', User::class);
-Route::get('/produtos', Products::class);
+Route::get('/dashboard', Dashboard::class)->name('dashboard');
+Route::get('/usuarios', User::class)->name('users');
+Route::get('/produtos', Products::class)->name('products');
 
-Route::get('lang/{locale}', 'App\Http\Controllers\LocalizationController@index');
+Route::get('lang/{locale}', 'App\Http\Controllers\LocalizationController@index')->name('lang');
 
 /*
 Route::group(['prefix' => '{locale}'], function() {

@@ -39,6 +39,12 @@ class Register extends Component
         $this->dispatchBrowserEvent('user-registered', ['user' => $user]);
         // Refresh datatables when user has created 
         $this->emit('refreshLivewireDatatable');
+
+        // redirect()->route('login');
+    }
+
+    public function redirectThis() {
+        redirect()->route('login');
     }
 
 }

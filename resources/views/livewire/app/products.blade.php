@@ -9,7 +9,7 @@
         <div>
             @livewire('layouts.app.sidebar')
         </div>
-        <div class="pt-14 w-full h-full border-l">
+        <div class="pt-14 w-full h-full">
             
             <div class="w-11/12 ml-6">
                 <livewire:app.table.products/>

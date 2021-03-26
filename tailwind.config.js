@@ -13,6 +13,9 @@ module.exports = {
       transformOrigin: {
         "0": "0%",
       },
+      animation: {
+        'spin-slow': 'spin 4s linear infinite',
+       },
     },
   },
   variants: {

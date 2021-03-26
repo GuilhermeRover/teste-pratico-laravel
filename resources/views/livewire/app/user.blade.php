@@ -12,7 +12,7 @@
                 @livewire('layouts.app.sidebar')
             </div>
 
-            <div class="pt-14 w-full h-full border-l">
+            <div class="pt-14 w-full h-full">
                 <div class="inline-block rounded-md p-1 m-4 bg-gray-100 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-600">
                     <div class="flex items-center" @click="modal = true">
                         <h1 class="mr-2 text-2xl cursor-pointer text-gray-800 dark:text-white">
@@ -24,7 +24,7 @@
 
                 {{-- Modal --}}
                 <div>
-                    <div x-show.transition.duration.200ms="modal" class="absolute top-0 left-0 flex items-center justify-center z-50 w-screen h-screen bg-black bg-opacity-75" @user-created.window="document.getElementById('name').value = null, document.getElementById('email').value = null, document.getElementById('password').value = null, modal = false">
+                    <div x-show.transition.duration.200ms="modal" class="absolute top-0 left-0 flex items-center justify-center z-50 w-screen h-screen bg-black bg-opacity-75" @user-created.window="document.getElementById('name').value = null, document.getElementById('email').value = null, document.getElementById('password').value = null, modal = false, $dispatch('notice', {type: 'success', text: '🔥 Usuário criado com sucesso!'})">
                         <div class="w-full h-full">
                             <div class="h-full flex items-center justify-center p-2">
                                 
@@ -79,13 +79,41 @@
                                         {{__('content.app-users-save')}}
                                     </button>
                                 </form>
-
+                                
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="overflow-scroll">
+                <div
+                    x-data="noticesHandler()"
+                    class="absolute top-16 right-10 z-50 flex justify-center"
+                    @notice.window="add($event.detail)"
+                    style="pointer-events:none">
+                    <template x-for="notice of notices" :key="notice.id">
+                        <div
+                            x-show="visible.includes(notice)"
+                            x-transition:enter="transition ease-in duration-200"
+                            x-transition:enter-start="transform opacity-0 translate-y-2"
+                            x-transition:enter-end="transform opacity-100"
+                            x-transition:leave="transition ease-out duration-500"
+                            x-transition:leave-start="transform translate-x-0 opacity-100"
+                            x-transition:leave-end="transform translate-x-full opacity-0"
+                            @click="remove(notice.id)"
+                            class="rounded mb-4 mr-6 w-60 h-16 p-2 flex items-center justify-center text-white shadow-lg font-bold text-lg cursor-pointer"
+                            :class="{
+                                'bg-green-500': notice.type === 'success',
+                                'bg-blue-500': notice.type === 'info',
+                                'bg-yellow-500': notice.type === 'warning',
+                                'bg-red-500': notice.type === 'error',
+                                }"
+                            style="pointer-events:all"
+                            x-text="notice.text">
+                        </div>
+                    </template>
+                </div>
+                
+                <div class="">
                     <livewire:app.table.user/>
                 </div>
                 

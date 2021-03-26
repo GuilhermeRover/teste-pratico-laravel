@@ -9,13 +9,13 @@
         <div>
             @livewire('layouts.app.sidebar')
         </div>
-        <div class="pt-14 w-full h-full border-l">
+        <div class="pt-14 w-full h-full">
             <h1 class="text-3xl p-8 text-gray-800 dark:text-white">
                 {{__('content.app-dashboard-dashboard')}}
 
                 
                 <div class="flex items-center justify-center ">
-                    <button x-data="{}"
+                    <button
                         @click="$dispatch('notice', {type: 'success', text: '🔥 Success!'})"
                         class="m-4 bg-green-500 text-lg font-bold p-6 py-2 text-white shadow-md rounded">
                         Success
@@ -92,6 +92,10 @@
                     }
 
                 </script>
+                https://economia.awesomeapi.com.br/all/USD-BRL,USDT-BRL
+                https://docs.awesomeapi.com.br/api-de-moedas
+<canvas id="myChart" width="400" height="400"></canvas>
+
             </h1>
         </div>
     </div>

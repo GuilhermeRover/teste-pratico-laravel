@@ -7,6 +7,7 @@
     @livewireStyles
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="path/to/chartjs/dist/Chart.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     
     <script>
 
@@ -24,6 +25,8 @@
     <div x-data="{IsOpen: false, lang: false, Sidebar: false, modal: false, dark: localStorage.theme === 'dark'}">
         {{ $slot }}
     </div>
+
+               
 
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
@@ -46,8 +49,36 @@
             }
         }
 
-        var locale = {{ session()->get('locale') }};
-        console.log(locale);
+        function noticesHandler() {
+            return {
+                notices: [],
+                visible: [],
+                add(notice) {
+                    notice.id = Date.now()
+                    this.notices.push(notice)
+                    this.fire(notice.id)
+                },
+                fire(id) {
+                    this.visible.push(this.notices.find(notice => notice.id == id))
+                    const timeShown = 4000 * this.visible.length
+                    setTimeout(() => {
+                        this.remove(id)
+                    }, timeShown)
+                },
+                remove(id) {
+                    const notice = this.visible.find(notice => notice.id == id)
+                    const index = this.visible.indexOf(notice)
+                    this.visible.splice(index, 1)
+                },
+                
+            };
+        }
+        function redirectThis() {
+            var loginRoute = "{{route('login')}}";
+            setTimeout(function(){ 
+                location.replace(loginRoute);
+            }, 3000);
+        }
     </script>
 </body>
 </html> 
