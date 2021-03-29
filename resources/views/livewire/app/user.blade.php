@@ -30,6 +30,7 @@
                                 
                                 {{-- Form --}}
                                 <form method="post" wire:submit.prevent="create"  @click.away="document.getElementById('name').value = '', document.getElementById('email').value = '', document.getElementById('password').value = '', modal = false" class="w-full md:w-6/12 lg:w-5/12 xl:w-4/12 rounded-lg shadow-md border p-6 bg-white dark:bg-gray-900">
+                                    @csrf
                                     {{-- X modal button --}}                
                                     <box-icon name='x'  @click="document.getElementById('name').value = null, document.getElementById('email').value = null, document.getElementById('password').value = null, modal = false" class="fill-current text-gray-800 float-right cursor-pointer dark:text-white"></box-icon>
                                     

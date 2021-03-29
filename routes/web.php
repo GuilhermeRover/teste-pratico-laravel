@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Livewire\Guest\Home;
 use App\Http\Livewire\Guest\Auth\Login;
 use App\Http\Livewire\Guest\Auth\Register;
@@ -29,16 +30,22 @@ if (in_array(Request::segment(1),['ar', 'az', 'be', 'bg', 'bn', 'bs', 'ca', 'cs'
 }
 */
 
-Route::get('/', Home::class);
+Route::get('/', Home::class)->name('home');
 Route::get('/login', Login::class)->name('login');
 Route::get('/cadastrar', Register::class)->name('register');
 
-Route::get('/dashboard', Dashboard::class)->name('dashboard');
-Route::get('/usuarios', User::class)->name('users');
-Route::get('/produtos', Products::class)->name('products');
 
-Route::get('lang/{locale}', 'App\Http\Controllers\LocalizationController@index')->name('lang');
+Route::post('logout', LogoutController::class)
+->name('logout')->middleware('auth');
 
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function() {
+
+    Route::get('/', Dashboard::class)->name('dashboard');
+    Route::get('/usuarios', User::class)->name('users');
+    Route::get('/produtos', Products::class)->name('products');
+
+    Route::get('lang/{locale}', 'App\Http\Controllers\LocalizationController@index')->name('lang');
+});
 /*
 Route::group(['prefix' => '{locale}'], function() {
     

@@ -16,7 +16,7 @@
                 </div>
                 <div class="mr-14 ml-4 flex items-center cursor-pointer text-gray-800 dark:text-white" @click="IsOpen = !IsOpen">
                     <h1 class="">
-                        Eder Guilherme dos Reis Rover
+                        {{ auth()->user()->name }}
                     </h1>
                     <box-icon name="chevron-down" class="fill-current w-8 h-8 absolute right-10 text-gray-800 dark:text-white" x-show.transition.duration.400ms="!IsOpen"></box-icon>
                     <box-icon name="chevron-up" class="fill-current w-8 h-8 absolute right-10 text-gray-800 dark:text-white" x-show.transition.duration.400ms="IsOpen"></box-icon>
@@ -42,12 +42,35 @@
             <h1 class="dataTime mt-2 text-xs text-center text-gray-400">
                 {{-- Timer --}}
             </h1>
-            <a href="{{ url('/logout') }}" class="flex items-center justify-center pl-2 mt-2 pt-2 pb-2 cursor-pointer bg-gray-50 dark:bg-gray-900">
-                <box-icon type='solid' name='log-out' class="fill-current  dark:text-gray-100"></box-icon>
-                <h1 class="text-red-600 text-base font-semibold ">
-                    {{__('content.app-header-logout')}}
-                </h1>
-            </a>
+            <div class="flex items-center justify-center p-4 text-blue-700 underline border-t">
+
+
+                <a
+                    href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-dark-gray-600 dark:hover:text-gray-200"
+                >
+                    <svg
+                        class="w-4 h-4 mr-3"
+                        aria-hidden="true"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                        ></path>
+                    </svg>
+                    <span>{{__('Logout')}}</span>
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
         </div>
     </div>
 
@@ -101,12 +124,35 @@
             <h1 class="dataTime mt-2 text-xs text-center text-gray-400">
                 {{-- Timer --}}
             </h1>
-            <a href="{{ url('/logout') }}" class="flex items-center justify-center pl-2 mt-2 pt-2 pb-2 cursor-pointer bg-gray-50 dark:bg-gray-900">
-                <box-icon type='solid' name='log-out' class="fill-current  dark:text-gray-100"></box-icon>
-                <h1 class="text-red-600 text-base font-semibold">
-                    {{__('content.app-header-logout')}}
-                </h1>
-            </a>
+            <div class="flex items-center justify-center p-4 text-blue-700 underline border-t">
+
+
+                <a
+                    href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();"
+                    class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-dark-gray-600 dark:hover:text-gray-200"
+                >
+                    <svg
+                        class="w-4 h-4 mr-3"
+                        aria-hidden="true"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                        ></path>
+                    </svg>
+                    <span>{{__('Logout')}}</span>
+                </a>
+
+                <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
         </div>
     </div>
 </div>
