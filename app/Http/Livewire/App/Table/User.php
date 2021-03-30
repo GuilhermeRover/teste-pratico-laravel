@@ -36,10 +36,11 @@ class User extends LivewireDatatable
   
             DateColumn::name('created_at')->label('Registrado em')->searchable(),
             
+            Column::delete(),
             
-            Column::callback(['id', 'name'], function ($id, $name) {
-                return view('livewire.app.table.actions', ['id' => $id, 'name' => $name]);
-            }),
+            //Column::callback(['id', 'name'], function ($id, $name) {
+            //    return view('livewire.app.table.actions', ['id' => $id, 'name' => $name]);
+            //}),
             
             //Column::delete(),
         ];
