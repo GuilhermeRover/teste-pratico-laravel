@@ -9,6 +9,9 @@ use App\Http\Livewire\App\Dashboard;
 use App\Http\Livewire\App\User;
 use App\Http\Livewire\App\Products;
 
+use App\Http\Livewire\App\Profile\Profile;
+use App\Http\Livewire\App\Profile\Config;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 
@@ -29,33 +32,28 @@ if (in_array(Request::segment(1),['ar', 'az', 'be', 'bg', 'bn', 'bs', 'ca', 'cs'
     App::setLocale('en');
 }
 */
+Route::get('lang/{locale}', 'App\Http\Controllers\LocalizationController@index')->name('lang');
 
+// guest routes
 Route::get('/', Home::class)->name('home');
 Route::get('/login', Login::class)->name('login');
 Route::get('/cadastrar', Register::class)->name('register');
 
 
-Route::post('logout', LogoutController::class)
-->name('logout')->middleware('auth');
 
-Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function() {
 
+Route::group([
+    'prefix'     => 'dashboard', 
+    'middleware' => ['auth']
+], function() {
+    // app routes
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/usuarios', User::class)->name('users');
     Route::get('/produtos', Products::class)->name('products');
+    Route::post('/logout', LogoutController::class)->name('logout');
 
-    Route::get('lang/{locale}', 'App\Http\Controllers\LocalizationController@index')->name('lang');
-});
-/*
-Route::group(['prefix' => '{locale}'], function() {
-    
-    Route::get('/', Home::class);
-    Route::get('/login', Login::class);
-    Route::get('/cadastrar', Register::class);
+    // profile
+    Route::get('/perfil', Profile::class)->name('profile');
+    Route::get('/configuracoes', Config::class)->name('config');
 
-    Route::get('/dashboard', Dashboard::class);
-    Route::get('/usuarios', User::class);
-    Route::get('/produtos', Products::class);
-    
 });
-*/

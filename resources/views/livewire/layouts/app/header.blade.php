@@ -27,13 +27,13 @@
             <h1 class="mt-3 text-xs text-center text-gray-400">
                 {{__('content.app-header-config')}}
             </h1>
-            <a href="{{ url('/perfil') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
+            <a href="{{ route('profile') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
                 <box-icon name='user' class="fill-current text-gray-700 dark:text-gray-100"></box-icon>
                 <h1 class="text-gray-800 text-base ml-1 dark:text-white">
                     {{__('content.app-header-profile')}}
                 </h1>
             </a>
-            <a href="{{ url('/configuracoes') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
+            <a href="{{ route('config') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
                 <box-icon name='cog' class="fill-current text-gray-700 dark:text-gray-100"></box-icon>
                 <h1 class="text-gray-800 text-base ml-1 dark:text-white">
                     {{__('content.app-header-configuration')}}
@@ -109,13 +109,13 @@
             <h1 class="mt-3 text-xs text-center text-gray-700">
                 Eder Guilherme dos Reis Rover
             </h1>
-            <a href="{{ url('/perfil') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
+            <a href="{{ route('profile') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
                 <box-icon name='user' class="fill-current text-gray-700 dark:text-gray-100"></box-icon>
                 <h1 class="text-gray-800 text-base ml-1 dark:text-white">
                     {{__('content.app-header-profile')}}
                 </h1>
             </a>
-            <a href="{{ url('/configuracoes') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
+            <a href="{{ route('config') }}" class="flex items-center justify-center pl-2 pt-2 cursor-pointer">
                 <box-icon name='cog' class="fill-current text-gray-700 dark:text-gray-100"></box-icon>
                 <h1 class="text-gray-800 text-base ml-1 dark:text-white">
                     {{__('content.app-header-configuration')}}
