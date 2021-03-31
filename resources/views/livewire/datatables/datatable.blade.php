@@ -14,7 +14,7 @@
                             <box-icon name='search' class="fill-current text-gray-600 dark:text-gray-200"></box-icon>
                         </div>
                         {{-- input search --}}
-                        <input wire:model.debounce.500ms="search" class="p-2 form-input block w-full rounded-md pl-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 bg-gray-50 focus:bg-white dark:bg-gray-800 dark:text-gray-200" placeholder="{{__('datatables.search-placeholder')}} {{ $this->searchableColumns()->map->label->join(', ') }}" />
+                        <input wire:model.debounce.500ms="search" class="p-2 form-input block w-full rounded-md pl-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 bg-gray-50 focus:bg-white dark:bg-gray-800 dark:text-white" placeholder="{{__('datatables.search-placeholder')}} {{ $this->searchableColumns()->map->label->join(', ') }}" />
                         <div class="absolute inset-y-0 right-0 top-1 pr-3 flex items-center">
                             <button wire:click="$set('search', null)" class="focus:outline-none text-gray-600 hover:text-red-600 dark:text-gray-200">
                                 <box-icon type='solid' name='tag-x' class="fill-current h-6 w-6 stroke-current"></box-icon>
@@ -54,6 +54,7 @@
         @if($hideable === 'buttons')
         <div class="p-2 grid grid-cols-8 gap-2">
             @foreach($this->columns as $index => $column)
+            {{-- checkbox button in each fields --}}
             <button wire:click.prefetch="toggle('{{ $index }}')" class="px-3 py-2 rounded text-white text-xs focus:outline-none
             {{ $column['hidden'] ? 'bg-blue-100 hover:bg-blue-300 text-blue-600' : 'bg-blue-500 hover:bg-blue-800' }}">
                 {{ $column['label'] }}
@@ -62,8 +63,8 @@
         </div>
         @endif
 
-        {{-- datatable --}}
-        <div class="rounded-lg shadow-lg bg-blue-200">
+        {{-- datatable checkbox --}}
+        <div class="rounded-lg shadow-lg">
             <div class="overflow-x-scroll rounded-lg @unless($this->hidePagination) rounded-b-none @endif">
                 <div class="table align-middle min-w-full">
                     @unless($this->hideHeader)
@@ -72,8 +73,8 @@
                             @if($hideable === 'inline')
                                 @include('datatables::header-inline-hide', ['column' => $column, 'sort' => $sort])
                             @elseif($column['type'] === 'checkbox')
-                            <div class="relative table-cell h-12 w-48 overflow-hidden align-top px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider flex items-center focus:outline-none">
-                                <div class="px-3 py-1 rounded @if(count($selected)) bg-orange-400 @else bg-gray-200 @endif text-white text-center">
+                            <div class="relative table-cell h-12 w-48 overflow-hidden align-top px-6 py-3 border-b border-gray-200 bg-gray-50 dark:bg-gray-900 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider flex items-center focus:outline-none">
+                                <div class="px-3 py-1 rounded @if(count($selected)) bg-indigo-400 dark:bg-indigo-900 @else bg-gray-200 dark:bg-gray-700 @endif text-white text-center">
                                     {{ count($selected) }}
                                 </div>
                             </div>
@@ -114,8 +115,9 @@
                         @endforeach
                     </div>
                     @endif
+                    {{-- Fields --}}
                     @forelse($this->results as $result)
-                        <div class="table-row p-1 divide-x divide-gray-100 {{ isset($result->checkbox_attribute) && in_array($result->checkbox_attribute, $selected) ? 'bg-orange-100' : ($loop->even ? 'bg-gray-100' : 'bg-gray-50') }}">
+                        <div class="table-row p-1 divide-x divide-gray-100 {{ isset($result->checkbox_attribute) && in_array($result->checkbox_attribute, $selected) ? 'bg-blue-200 dark:bg-gray-500' : ($loop->even ? 'bg-gray-100 dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-900') }}">
                             @foreach($this->columns as $column)
                                 @if($column['hidden'])
                                     @if($hideable === 'inline')
@@ -124,17 +126,17 @@
                                 @elseif($column['type'] === 'checkbox')
                                     @include('datatables::checkbox', ['value' => $result->checkbox_attribute])
                                 @else
-                                    <div class="px-6 py-2 whitespace-no-wrap text-sm leading-5 text-gray-900 table-cell @if($column['align'] === 'right') text-right @elseif($column['align'] === 'center') text-center @else text-left @endif">
+                                    <div class="px-6 py-2 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-white table-cell @if($column['align'] === 'right') text-right @elseif($column['align'] === 'center') text-center @else text-left @endif">
                                         {!! $result->{$column['name']} !!}
                                     </div>
                                 @endif
                             @endforeach
                         </div>
                     @empty
-                        <div class="p-3 text-lg h-40">
-                        <p class="absolute p-3 mt-4 text-lg text-teal-600">
-                           {{__('datatables.search-empty')}}
-                        </p>
+                        <div class="p-3 text-lg h-20">
+                            <p class="absolute p-3 mt-1 text-lg text-teal-600 dark:text-white">
+                                {{__('datatables.search-empty')}}
+                            </p>
                         </div>
                     @endforelse
                 </div>
